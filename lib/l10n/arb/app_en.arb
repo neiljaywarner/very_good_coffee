@@ -1,0 +1,11 @@
+{
+    "@@locale": "en",
+    "counterAppBarTitle": "Counter",
+    "@counterAppBarTitle": {
+        "description": "Text shown in the AppBar of the Counter Page"
+    },
+    "favorites": "Favorites",
+    "home": "Home",
+    "noFavoritesMessage": "No favorites selected yet; please star a coffee picture to select one.",
+    "errorLoadingImage": "Error loading image"
+}
