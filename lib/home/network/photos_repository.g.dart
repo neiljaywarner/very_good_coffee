@@ -6,17 +6,15 @@ part of 'photos_repository.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$getCoffeePictureUrlHash() =>
-    r'7cc19787907e162199dc0bf62830c433c4579614';
+String _$getCoffeePictureUrlHash() => r'7cc19787907e162199dc0bf62830c433c4579614';
 
 /// See also [getCoffeePictureUrl].
 @ProviderFor(getCoffeePictureUrl)
 final getCoffeePictureUrlProvider = AutoDisposeFutureProvider<String>.internal(
   getCoffeePictureUrl,
   name: r'getCoffeePictureUrlProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$getCoffeePictureUrlHash,
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$getCoffeePictureUrlHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
