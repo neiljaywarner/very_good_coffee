@@ -12,24 +12,20 @@ Future<String> getCoffeePictureUrl(GetCoffeePictureUrlRef ref) async =>
 class FakePhotosRepository extends IPhotosRepository {
   FakePhotosRepository();
 
-  String hardcodedUrl1 =
-      'https://coffee.alexflipnote.dev/n2umtTs_y80_coffee.jpg';
-  String hardcodedUrl2 =
-      'https://coffee.alexflipnote.dev/KwS5dWCe9gQ_coffee.jpg';
+  String hardcodedUrl1 = 'https://coffee.alexflipnote.dev/n2umtTs_y80_coffee.jpg';
+  String hardcodedUrl2 = 'https://coffee.alexflipnote.dev/KwS5dWCe9gQ_coffee.jpg';
 
   bool firstPicture = false;
 
   @override
   Future<CoffeePicture> getCoffeePicture() async {
     firstPicture = !firstPicture;
-    return firstPicture
-        ? CoffeePicture(file: hardcodedUrl1)
-        : CoffeePicture(file: hardcodedUrl2);
+    return firstPicture ? CoffeePicture(file: hardcodedUrl1) : CoffeePicture(file: hardcodedUrl2);
   }
 }
 
+//ignore: one_member_abstracts
 abstract class IPhotosRepository {
-  //ignore: one_member_abstracts
   Future<CoffeePicture> getCoffeePicture();
 }
 
@@ -39,8 +35,7 @@ class PhotosRepository extends IPhotosRepository {
   final CoffeePhotosApi _coffeePhotosApi;
 
   @override
-  Future<CoffeePicture> getCoffeePicture() async =>
-      _coffeePhotosApi.getCoffeePicture();
+  Future<CoffeePicture> getCoffeePicture() async => _coffeePhotosApi.getCoffeePicture();
 }
 
 @Riverpod(keepAlive: true)
