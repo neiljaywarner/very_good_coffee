@@ -6,7 +6,8 @@ part 'coffee_picture.g.dart';
 class CoffeePicture {
   CoffeePicture({required this.file});
 
-  factory CoffeePicture.fromJson(Map<String, dynamic> json) => _$CoffeePictureFromJson(json);
+  factory CoffeePicture.fromJson(Map<String, dynamic> json) =>
+      _$CoffeePictureFromJson(json);
   @JsonKey(name: 'file')
   String file;
 }
