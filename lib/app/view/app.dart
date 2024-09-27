@@ -48,5 +48,3 @@ class AppTabsPage extends StatelessWidget {
 
 bool tappedFavorite = false;
 bool tappedNext = false;
-String hardcodedUrl1 = 'https://coffee.alexflipnote.dev/n2umtTs_y80_coffee.jpg';
-String hardcodedUrl2 = 'https://coffee.alexflipnote.dev/KwS5dWCe9gQ_coffee.jpg';
