@@ -5,23 +5,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import './../bdd_steps/the_app_is_running.dart';
-import './../bdd_steps/i_see_image.dart';
 import 'package:bdd_widget_test/step/i_tap_text.dart';
+import 'package:bdd_widget_test/step/i_see_text.dart';
+import './../bdd_steps/i_see_image.dart';
 
 void main() {
-  group('''Show coffee pictures''', () {
+  group('''Show favorites''', () {
     Future<void> bddSetUp(WidgetTester tester) async {
       await theAppIsRunning(tester);
     }
 
     testWidgets('''Initial load''', (tester) async {
       await bddSetUp(tester);
-      await iSeeImage(
-          tester, 'https://coffee.alexflipnote.dev/n2umtTs_y80_coffee.jpg');
+      await iTapText(tester, 'Favorites');
+      await iSeeText(tester, 'No pictures saved yet.');
     });
-    testWidgets('''Get New Picture''', (tester) async {
+    testWidgets('''Save Picture''', (tester) async {
       await bddSetUp(tester);
-      await iTapText(tester, 'Load New');
+      await iTapText(tester, 'Save Current');
+      await iTapText(tester, 'Favorites');
       await iSeeImage(
           tester, 'https://coffee.alexflipnote.dev/KwS5dWCe9gQ_coffee.jpg');
     });
