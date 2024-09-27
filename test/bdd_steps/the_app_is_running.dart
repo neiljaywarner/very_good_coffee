@@ -9,7 +9,7 @@ Future<void> theAppIsRunning(WidgetTester tester) async {
     () async => await tester.pumpWidget(
       ProviderScope(
         overrides: [photosRepositoryProvider.overrideWithValue(FakePhotosRepository())],
-        child: App(),
+        child: const App(),
       ),
     ),
   );
