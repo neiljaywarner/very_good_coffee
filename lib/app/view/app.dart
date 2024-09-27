@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:very_good_coffee/favorites/favorites_widget.dart';
-import 'package:very_good_coffee/home/view/home_widget.dart';
+import 'package:very_good_coffee/home/presentation/home_widget.dart';
 import 'package:very_good_coffee/l10n/l10n.dart';
 
 class App extends StatelessWidget {
