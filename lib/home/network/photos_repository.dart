@@ -88,6 +88,9 @@ class PhotosRepository extends IPhotosRepository {
   @override
   Future<List<String>> getCoffeePicturePaths() async {
     final picturePaths = List<String>.empty(growable: true);
+    if (directoryString.isEmpty) {
+      directoryString = '${(await getApplicationDocumentsDirectory()).path}/coffee_images';
+    }
     final dir = Directory(directoryString);
     final files = dir.listSync();
     for (final file in files) {
