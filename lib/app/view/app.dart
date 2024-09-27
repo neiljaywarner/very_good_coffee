@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:transparent_image/transparent_image.dart';
+import 'package:very_good_coffee/favorites/favorites_widget.dart';
+import 'package:very_good_coffee/home/view/home_widget.dart';
 import 'package:very_good_coffee/l10n/l10n.dart';
 
 class App extends StatelessWidget {
@@ -34,12 +35,6 @@ class AppTabsPage extends StatelessWidget {
               ],
             ),
             title: const Text('Very Good Coffee'),
-            actions: [
-              IconButton(
-                onPressed: () => debugPrint('hi'),
-                icon: const Icon(Icons.favorite),
-              ),
-            ],
           ),
           body: const TabBarView(
             children: [
@@ -49,40 +44,6 @@ class AppTabsPage extends StatelessWidget {
           ),
         ),
       );
-}
-
-class HomeWidget extends StatelessWidget {
-  const HomeWidget({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(hardcodedUrl1),
-        FadeInImage.memoryNetwork(
-          image: hardcodedUrl1,
-          placeholder: kTransparentImage,
-          imageErrorBuilder: (context, error, stackTrace) => ColoredBox(
-            color: Colors.red,
-            child: Text(context.l10n.errorLoadingImage),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class FavoritesWidget extends StatelessWidget {
-  const FavoritesWidget({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(context.l10n.noFavoritesMessage);
-  }
 }
 
 bool tappedFavorite = false;
