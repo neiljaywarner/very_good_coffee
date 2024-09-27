@@ -43,6 +43,6 @@ IPhotosRepository photosRepository(PhotosRepositoryRef ref) =>
     PhotosRepository(CoffeePhotosApi(ref.watch(dioProvider)));
 
 // Note: Can use dio Logging interceptor here or even fakeDio here
-// see: https://github.com/rrousselGit/riverpod/blob/master/examples/marvel/lib/src/fake_marvel.dart
+// see:https://github.com/rrousselGit/riverpod/blob/master/examples/marvel/lib/src/fake_marvel.dart
 @Riverpod(keepAlive: true)
 Dio dio(DioRef _) => Dio();

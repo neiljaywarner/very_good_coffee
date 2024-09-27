@@ -21,4 +21,5 @@ jobs:
       min_coverage: 60
       format_directories: lib
       analyze_directories: lib
+      format_line_length: "100"
       coverage_excludes: "**/*.g.dart **/*.freezed.g.dart"
