@@ -9,36 +9,38 @@ class HomeWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Column(
-      children: [
-        ref.watch(getCoffeePictureUrlProvider).when(
-              data: (String url) => FadeInImage.memoryNetwork(
-                image: url,
-                imageSemanticLabel: url,
-                placeholder: kTransparentImage,
-                imageErrorBuilder: (context, error, stackTrace) => ColoredBox(
-                  color: Colors.red,
-                  child: Text(context.l10n.errorLoadingImage),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          ref.watch(getCoffeePictureUrlProvider).when(
+                data: (String url) => FadeInImage.memoryNetwork(
+                  image: url,
+                  imageSemanticLabel: url,
+                  placeholder: kTransparentImage,
+                  imageErrorBuilder: (context, error, stackTrace) => ColoredBox(
+                    color: Colors.red,
+                    child: Text(context.l10n.errorLoadingImage),
+                  ),
                 ),
+                error: (_, __) => const Text('Error loading coffee picture'),
+                loading: CircularProgressIndicator.adaptive,
               ),
-              error: (_, __) => const Text('Error loading coffee picture'),
-              loading: CircularProgressIndicator.adaptive,
-            ),
-        const SizedBox(height: 10),
-        OverflowBar(
-          alignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            OutlinedButton(
-              onPressed: () => ref.invalidate(getCoffeePictureUrlProvider),
-              child: const Text('Load New'),
-            ),
-            OutlinedButton(
-              onPressed: () => debugPrint('savecurrent'),
-              child: const Text('Save Current'),
-            ),
-          ],
-        ),
-      ],
+          const SizedBox(height: 10),
+          OverflowBar(
+            alignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              OutlinedButton(
+                onPressed: () => ref.invalidate(getCoffeePictureUrlProvider),
+                child: const Text('Load New'),
+              ),
+              OutlinedButton(
+                onPressed: () => debugPrint('savecurrent'),
+                child: const Text('Save Current'),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
