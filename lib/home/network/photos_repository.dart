@@ -14,6 +14,10 @@ Future<String> getCoffeePictureUrl(GetCoffeePictureUrlRef ref) async =>
     (await ref.watch(photosRepositoryProvider).getCoffeePicture()).file;
 
 @Riverpod(keepAlive: false)
+Future<List<String>> getCoffeePicturePaths(GetCoffeePicturePathsRef ref) async =>
+    ref.watch(photosRepositoryProvider).getCoffeePicturePaths();
+
+@Riverpod(keepAlive: false)
 Future<String> saveCoffeePictureUrl(SaveCoffeePictureUrlRef ref, String url) async =>
     ref.watch(photosRepositoryProvider).saveCoffeePicture(url);
 
@@ -40,18 +44,27 @@ class FakePhotosRepository extends IPhotosRepository {
     // TODO(neiljaywarner): implement saveCoffeePicture
     throw UnimplementedError();
   }
+
+  @override
+  Future<List<String>> getCoffeePicturePaths() {
+    // TODO: implement getCoffeePicturePaths
+    throw UnimplementedError();
+  }
 }
 
 abstract class IPhotosRepository {
   Future<CoffeePicture> getCoffeePicture();
 
   Future<String> saveCoffeePicture(String url);
+
+  Future<List<String>> getCoffeePicturePaths();
 }
 
 class PhotosRepository extends IPhotosRepository {
   PhotosRepository(this._coffeePhotosApi);
 
   final CoffeePhotosApi _coffeePhotosApi;
+  String directoryString = '';
 
   @override
   Future<CoffeePicture> getCoffeePicture() async => _coffeePhotosApi.getCoffeePicture();
@@ -60,18 +73,28 @@ class PhotosRepository extends IPhotosRepository {
   @override
   Future<String> saveCoffeePicture(String url) async {
     final fileName = url.split('/').last;
-    final directoryString = '${(await getApplicationDocumentsDirectory()).path}/coffee_images';
+    if (directoryString.isEmpty) {
+      directoryString = '${(await getApplicationDocumentsDirectory()).path}/coffee_images';
+    }
     final path = '$directoryString/$fileName';
     // TODO(neiljaywarner): DioProvider, fakeDio, etc.
     final response = await Dio().download(url, path);
     debugPrint(response.statusMessage);
     debugPrint(path);
+
+    return path;
+  }
+
+  @override
+  Future<List<String>> getCoffeePicturePaths() async {
+    final picturePaths = List<String>.empty(growable: true);
     final dir = Directory(directoryString);
     final files = dir.listSync();
     for (final file in files) {
       debugPrint(file.path);
+      picturePaths.add(file.path);
     }
-    return path;
+    return picturePaths;
   }
 // TODO(neiljaywarner): Try/catchy and handle exceptions with error popup ref.listen()
 }

@@ -22,6 +22,23 @@ final getCoffeePictureUrlProvider = AutoDisposeFutureProvider<String>.internal(
 );
 
 typedef GetCoffeePictureUrlRef = AutoDisposeFutureProviderRef<String>;
+String _$getCoffeePicturePathsHash() =>
+    r'd0881d3e9e138a56434bff746d9933392aa319cd';
+
+/// See also [getCoffeePicturePaths].
+@ProviderFor(getCoffeePicturePaths)
+final getCoffeePicturePathsProvider =
+    AutoDisposeFutureProvider<List<String>>.internal(
+  getCoffeePicturePaths,
+  name: r'getCoffeePicturePathsProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$getCoffeePicturePathsHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef GetCoffeePicturePathsRef = AutoDisposeFutureProviderRef<List<String>>;
 String _$saveCoffeePictureUrlHash() =>
     r'3e67accf6fe336cebe6a6b130b0e111dd5fdc642';
 
