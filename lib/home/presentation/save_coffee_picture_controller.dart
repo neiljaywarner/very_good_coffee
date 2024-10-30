@@ -12,7 +12,7 @@ class SaveCoffeePictureController extends _$SaveCoffeePictureController {
     return null;
   }
 
-  Future<String?> save({required String url}) async {
+  Future<void> save({required String url}) async {
     final repository = ref.read(photosRepositoryProvider);
     state = const AsyncLoading<String?>();
     state = await AsyncValue.guard(() => repository.saveCoffeePicture(url));

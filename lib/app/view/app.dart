@@ -45,6 +45,3 @@ class AppTabsPage extends StatelessWidget {
         ),
       );
 }
-
-bool tappedFavorite = false;
-bool tappedNext = false;

@@ -8,13 +8,12 @@ class FavoritesWidget extends ConsumerWidget {
   const FavoritesWidget({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return ref.watch(getCoffeePicturePathsProvider).when(
-        data: (paths) =>
-            paths.isEmpty ? const Text('No pictures saved yet.') : FavoritesList(paths: paths),
-        error: (e, __) => Text(e.toString()),
-        loading: CircularProgressIndicator.adaptive);
-  }
+  Widget build(BuildContext context, WidgetRef ref) =>
+      ref.watch(getCoffeePicturePathsProvider).when(
+          data: (paths) =>
+              paths.isEmpty ? const Text('No pictures saved yet.') : FavoritesList(paths: paths),
+          error: (e, __) => Text(e.toString()),
+          loading: CircularProgressIndicator.adaptive);
 // TODO(neiljaywarner): extension method to reuse error and loading.
 }
 
@@ -24,11 +23,9 @@ class FavoritesList extends StatelessWidget {
   final List<String> paths;
 
   @override
-  Widget build(BuildContext context) {
-    return ListView.separated(
-      itemCount: paths.length,
-      separatorBuilder: (BuildContext context, int index) => const Divider(),
-      itemBuilder: (BuildContext context, int index) => Image.file(File(paths[index])),
-    );
-  }
+  Widget build(BuildContext context) => ListView.separated(
+        itemCount: paths.length,
+        separatorBuilder: (BuildContext context, int index) => const Divider(),
+        itemBuilder: (BuildContext context, int index) => Image.file(File(paths[index])),
+      );
 }
