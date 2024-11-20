@@ -32,7 +32,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   mocktail: ^1.0.4
-  retrofit_generator: '>=8.0.0 <10.0.0' # for Dart 3.3 use ^9.0.0
+  retrofit_generator: ^9.1.5 # for Dart 3.3 use ^9.0.0
   riverpod_generator: ^2.4.3
   riverpod_lint: ^2.3.13
   very_good_analysis: ^6.0.0
