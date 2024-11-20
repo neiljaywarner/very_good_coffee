@@ -22,7 +22,7 @@ dependencies:
   json_serializable: ^6.8.0
   mocktail_image_network: ^1.2.0
   retrofit: ^4.4.1
-  riverpod_annotation: ^2.3.5
+  riverpod_annotation: ^2.6.1
   transparent_image: ^2.0.1
 
 dev_dependencies:
